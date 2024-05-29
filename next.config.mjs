@@ -5,6 +5,9 @@ export default {
       use: ['@svgr/webpack'],
     });
 
-    return config;
+    return config
   },
-};
+  images: {
+    domains: ['fakestoreapi.com']
+  },
+}
