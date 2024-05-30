@@ -1,8 +1,8 @@
 "use client"
 
 import { useCart } from "../context/CartContext"
-import { FiX } from "react-icons/fi"
 import Image from "next/image"
+import RemoveIcon from "../../../public/remove.svg"
 
 const Cart = () => {
   const { cartItems, removeFromCart, clearCart } = useCart()
@@ -36,9 +36,9 @@ const Cart = () => {
                   </div>
                   <button 
                     onClick={() => removeFromCart(product)} 
-                    className="text-red-500 bg-white border border-red-500 rounded-full p-2"
+                    className="text-red-500 bg-white border border-red-500 rounded-full p-1"
                   >
-                    <FiX size={16} className="text-red-500" />
+                    <RemoveIcon size={24} className="text-red-500" />
                   </button>
                 </li>
               ))}
