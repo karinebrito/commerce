@@ -1,27 +1,29 @@
 "use client"
 
 import { useCart } from "../context/CartContext"
-import { FiX } from "react-icons/fi" 
+import { FiX } from "react-icons/fi"
 import Image from "next/image"
 
 const Cart = () => {
-  const { cartItems, removeFromCart } = useCart()
+  const { cartItems, removeFromCart, clearCart } = useCart()
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-4xl p-10 bg-white rounded-lg shadow-md">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4 sm:p-6 md:p-10">
+      <div className="w-full sm:max-w-md md:max-w-2xl lg:max-w-4xl p-4 sm:p-6 md:p-10 bg-white rounded-lg shadow-md">
         {cartItems.length === 0 ? (
           <p className="text-gray-500">Nenhum produto selecionado.</p>
         ) : (
           <>
-            <p className="text-xl font-semibold mb-4">{cartItems.length} produtos selecionados:</p>
+            <p className="text-base sm:text-lg font-semibold mb-4">
+              {cartItems.length} {cartItems.length === 1 ? "produto selecionado" : "produtos selecionados"}
+            </p>
             <ul>
-              {cartItems.map((product) => (
-                <li key={product.id} className="flex justify-between items-center mb-2">
-                  <div className="flex items-center space-x-4">
+              {cartItems.map((product, index) => (
+                <li key={product.id} className={`flex flex-col sm:flex-row justify-between items-center mb-4 pb-4 border-b ${index === cartItems.length - 1 ? 'border-none' : 'border-gray-200'}`}>
+                  <div className="flex flex-col sm:flex-row items-center w-full space-y-2 sm:space-y-0 sm:space-x-4 mb-2 sm:mb-0">
                     <Image src={product.image} alt={product.title} width={50} height={50} className="object-cover rounded"/>
-                    <div>
-                      <span>{product.title}</span>
+                    <div className="flex-1 text-center sm:text-left">
+                      <span className="block">{product.title}</span>
                       {product.price !== null && (
                         <div className="text-sm text-gray-500">
                           {product.price.toLocaleString("pt-BR", {
@@ -42,8 +44,8 @@ const Cart = () => {
               ))}
             </ul>
             <div className="flex justify-end mt-4">
-              <button className="text-black rounded-full font-bold text-sm text-center border px-4 py-2">
-                Fechar Pedido
+              <button onClick={clearCart} className="text-black rounded-full font-semibold text-sm text-center border px-4 py-2">
+                Limpar Carrinho
               </button>
             </div>
           </>
