@@ -30,7 +30,7 @@ export default function Product({ product }: ProductProps) {
   return (
     <div className="flex flex-col rounded-md shadow-lg h-96 bg-white p-5">
       <div className="relative max-h-72 flex-1">
-        <ProductImage product={product} fill />
+        <ProductImage product={product} />
       </div>
       <div className="font-semibold my-3 w-50 truncate">{product.title}</div>
       {product.price && (
