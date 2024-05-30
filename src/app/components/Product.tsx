@@ -19,11 +19,9 @@ export default function Product({ product }: ProductProps) {
 
   const handleAddToCart = () => {
     if (!addedToCart) {
-      console.log("Adicionando produto ao carrinho:", product)
       addToCart(product)
       setAddedToCart(true)
     } else {
-      console.log("Removendo produto do carrinho:", product)
       removeFromCart(product)
       setAddedToCart(false)
     }
@@ -34,9 +32,9 @@ export default function Product({ product }: ProductProps) {
       <div className="relative max-h-72 flex-1">
         <ProductImage product={product} fill />
       </div>
-      <div className="font-bold my-3 w-50 truncate">{product.title}</div>
+      <div className="font-semibold my-3 w-50 truncate">{product.title}</div>
       {product.price && (
-        <div className="flex justify-center font-bold my-3 text-gray-500">
+        <div className="flex justify-center font-semibold my-3 text-gray-500">
           {product.price.toLocaleString("pt-BR", {
             style: "currency",
             currency: "BRL",
@@ -45,7 +43,7 @@ export default function Product({ product }: ProductProps) {
       )}
       <div className="w-full md:w-auto flex items-center justify-center">
        <button
-          className={`w-full flex items-center justify-center rounded-full font-bold text-sm text-center border px-4 py-2 ${addedToCart ? 'text-red-500' : 'text-green-500'}`}
+          className={`w-full flex items-center justify-center rounded-full font-semibold text-sm text-center border px-4 py-2 ${addedToCart ? 'text-red-500' : 'text-green-500'}`}
           onClick={handleAddToCart}
         >
           <span>{addedToCart ? "Remover" : "Adicionar"}</span>

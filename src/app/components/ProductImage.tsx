@@ -18,7 +18,7 @@ export default function ProductImage({ product, fill }: ProductImageProps){
             fill
             alt={product.title}
             className={`object-cover ${
-                loading ? 'scale-110 blur-md grayscale' : 'scale-110 blur-0 grayscale-0'
+                loading ? 'scale-110 blur-md grayscale' : ''
             }`}
             onLoadingComplete={() => setLoading(false)}
         />
@@ -29,7 +29,7 @@ export default function ProductImage({ product, fill }: ProductImageProps){
             width={400}
             height={700}
             className={`object-cover ${
-                loading ? 'scale-110 blur-md grayscale' : 'scale-110  blur-0 grayscale-0'
+                loading ? 'scale-110 blur-md grayscale' : ''
             }`}
             onLoadingComplete={() => setLoading(false)}
         />
