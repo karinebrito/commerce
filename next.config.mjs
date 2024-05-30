@@ -8,6 +8,12 @@ export default {
     return config
   },
   images: {
-    domains: ['fakestoreapi.com']
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'fakestoreapi.com',
+        pathname: '/**',
+      },
+    ],
   },
 }
