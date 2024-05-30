@@ -2,6 +2,7 @@ import React from 'react'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from './components/Header'
+import { CartProvider } from './context/CartContext'
 
 const inter = Inter({ subsets: ['greek'] })
 
@@ -18,10 +19,12 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
     <body className={`${inter.className} bg-gray-100`}>
+      <CartProvider>
         <Header />
-        <main className='h-full p-16'>
-          {children}
-        </main>
+          <main className='h-full p-16'>
+              {children}
+          </main>
+      </CartProvider>
       </body>
     </html>
   )
