@@ -18,6 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
+    <head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        <link rel="icon" href="/store.svg" />
+    </head>
     <body className={`${inter.className} bg-gray-100`}>
       <CartProvider>
         <Header />

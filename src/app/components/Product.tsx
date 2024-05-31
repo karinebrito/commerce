@@ -11,7 +11,7 @@ type ProductProps = {
 
 export default function Product({ product }: ProductProps) {
   const { addToCart, removeFromCart, cartItems } = useCart()
-  const [addedToCart, setAddedToCart] = useState(false)
+  const [ addedToCart, setAddedToCart ] = useState(false)
 
   useEffect(() => {
     setAddedToCart(cartItems.some((item) => item.id === product.id))
