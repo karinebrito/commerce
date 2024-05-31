@@ -7,7 +7,7 @@ const Cart = () => {
   const { cartItems, clearCart } = useCart()
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100 p-4 sm:p-6 md:p-10">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 sm:p-6 md:p-10">
       <div className="w-full sm:max-w-md md:max-w-2xl lg:max-w-4xl p-4 sm:p-6 md:p-10 bg-white rounded-lg shadow-md">
         {cartItems.length === 0 ? (
           <p className="text-gray-500">Nenhum produto selecionado.</p>
