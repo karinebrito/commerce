@@ -3,37 +3,44 @@
 import { ProductType } from "./types/ProductType"
 import Product from "./components/Product"
 import { useEffect, useState } from "react"
-
-
+import Spinner from "./components/Spinner"
 
 export default function Home() {
   const [ productsList, setProductsList ] = useState([])
   const [ isLoading, setIsLoading ] = useState(true)
 
-  useEffect( () => {
+  useEffect(() => {
     const fetchProducts = async () => {
-      setIsLoading(true)
-      const res = await fetch("https://fakestoreapi.com/products")
-    
-      if (!res.ok) {
-        throw new Error("Failed to fetch data")
-      }
-    
-      const products = await res.json()
+      try {
+        const res = await fetch("https://fakestoreapi.com/products")
 
-      setIsLoading(false)
-      setProductsList( products )
+        if (!res.ok) {
+          throw new Error("Failed to fetch data")
+        }
+
+        const products = await res.json()
+        setProductsList(products)
+      } catch (error) {
+        console.error(error)
+      } finally {
+        setIsLoading(false)
+      }
     }
 
     fetchProducts()
-  }, [] )
+  }, [])
 
-  if(isLoading) {
-    return <div>Loading...</div>
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <Spinner />
+      </div>
+    )
   }
 
-  if(!isLoading && productsList.length === 0) {
-    return <div>Não há produtos disponíveis</div>
+  if (productsList.length === 0) {
+    return <div className="flex justify-center items-center min-h-screen">Não há produtos disponíveis.</div>
   }
 
   return (
